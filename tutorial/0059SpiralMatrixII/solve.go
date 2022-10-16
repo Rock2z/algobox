@@ -35,3 +35,38 @@ func generateMatrix(n int) [][]int {
 		flag = !flag
 	}
 }
+
+func generateMatrix02(n int) [][]int {
+	ret := make([][]int, n)
+	for i := range ret {
+		ret[i] = make([]int, n)
+	}
+
+	i, j, cur := 0, 0, 1
+	for {
+		ret[i][j] = cur
+		cur++
+		if j < n-1 && ret[i][j+1] == 0 {
+			j++
+			continue
+		}
+		if i < n-1 && ret[i+1][j] == 0 {
+			i++
+			continue
+		}
+		if j > 0 && ret[i][j-1] == 0 {
+			j--
+			continue
+		}
+		for i > 0 && ret[i-1][j] == 0 {
+			i--
+			ret[i][j] = cur
+			cur++
+		}
+		cur--
+		if cur >= n*n {
+			break
+		}
+	}
+	return ret
+}
