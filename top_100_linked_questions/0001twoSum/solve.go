@@ -15,11 +15,11 @@ func solve(nums []int, target int) []int {
 	return []int{}
 }
 
-func find(a int, slice []int, ignoreFirst bool) int {
+func find(a int, slice []int, ignoreTheFirst bool) int {
 	for i, e := range slice {
 		if e == a {
-			if ignoreFirst {
-				ignoreFirst = false
+			if ignoreTheFirst {
+				ignoreTheFirst = false
 				continue
 			}
 			return i
